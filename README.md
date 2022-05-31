@@ -47,42 +47,87 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
-
 
 
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: VISMAYA.S
+RegisterNumber:  212221230125
 */
 
-
-
-
-
-
+### MULTIPLEXER :
+~~~
+module ex07(I0,I1,I2,I3,S0,S1,Y);
+input I0,I1,I2,I3,S0,S1;
+output Y;
+wire P,Q,R,S,S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (P,S0c,S1c,I0);
+and(Q,S0c,S1,I1);
+and(R,S0,S1c,I2);
+and(S,S0,S1,I3);
+or(Y,P,Q,R,S);
+endmodule
+~~~
+## DEMULTIPLEXER :
+~~~
+module ex07(Y0,Y1,Y2,Y3,S0,S1,I);
+input I,S0,S1;
+output Y0,Y1,Y2,Y3;
+wire S0c,S1c;
+not(S0c,S0);
+nor(S1c,S1);
+and (Y0,I,S0c,S1c);
+and(Y1,I,S0c,S1);
+and(Y2,I,S0,S1c);
+and(Y3,I,S0,S1);
+endmodule
+~~~
 ### RTL LOGIC  
 
+Multiplexer :
+
+![output](R1.png)
+
+De - Multiplexer :
+
+![output](r2.png)
 
 
 
+### TIMING DIAGRAMS  
 
+Multiplexer WHEN I0=1
 
+![output](m1.png)
 
+WHEN I1=1
 
-### TIMING DIGRAMS  
+![output](m2.png)
 
+WHEN I2=1
+![output](m3.png)
 
+WHEN I3=1
+![output](m4.png)
 
-
+De-multiplexer
+![output](m4.png)
 
 ### TRUTH TABLE 
+Multiplexer :
 
+![output](T1.png)
+
+De - Multiplexer :
+
+![output](r2.png)
 
 
 
 
 
 ### RESULTS 
+4 X1 multiplexer and 1X4 de multiplexer has been implemented using verilog and outputs are validated.
